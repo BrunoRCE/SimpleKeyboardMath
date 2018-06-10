@@ -1,0 +1,30 @@
+
+button
+{
+margin:0;
+}
+
+table
+{
+margin:0 auto;
+border-collapse: separate;
+border-spacing: 10px;
+text-align:center;
+}
+
+table td
+{
+width:66px;
+}
+
+.editor
+{
+width:100%; 
+padding:2%;
+margin-bottom:1%;
+}
+
+
+
+
+
