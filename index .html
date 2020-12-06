@@ -1,0 +1,128 @@
+<html>
+
+<head>
+	<meta charset='utf8'>
+	<title>SimpleKeyboardMath</title>
+	<link rel="stylesheet" href="styles/keyboard-style.css">
+	<link rel="stylesheet" type="text/css" href="mathquill/mathquill.css">
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
+	<script type="text/javascript" src="scripts/jQuery v3.1.1.js"></script>
+	<script type="text/javascript" src="mathquill/mathquill.js"></script>
+	<script src="scripts/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div style='margin:5%;'>
+		<table id='tabla'>
+			<tr>
+				<td colspan='11' style='text-align:left;'>
+					<code id='codigo' style='padding:2%;'></code><br><br>
+				</td>
+			</tr>
+			<tr>
+				<td colspan='11' style='text-align:left;'>
+					<span id='pantalla' class="editor" style='background:#fff' onkeyup='Check(event)'></span>
+				</td>
+			</tr>
+			<tr>
+				<td><button class='form-control' onClick='insertar("(")'>(</button></td>
+				<td><button class='form-control' onClick='insertar(")")'>)</button></td>
+				<td><button class='form-control' onClick='insertar("/")'><img src='images/fraccion.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("^2")'><img src='images/cuadrado.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("^3")'><img src='images/tercera.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("sen\\left(\\right)")'>sen</button></td>
+				<td><button class='form-control' onClick='insertar("\\cos\\left(\\right)")'>cos</button></td>
+				<td><button class='form-control' onClick='insertar("\\tan\\left(\\right)")'>tan</button></td>
+			</tr>
+			<tr>
+				<td><button class='form-control' onClick='insertar("[")'>[</button></td>
+				<td><button class='form-control' onClick='insertar("]")'>]</button></td>
+				<td><button class='form-control' onClick='insertar("\\pi")'>&pi;</button></td>
+				<td><button class='form-control' onClick='insertar("^")'><img src='images/potencia.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("\\vec")'><img src='images/absoluto.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("\\csc\\left(\\right)")'>csc</button></td>
+				<td><button class='form-control' onClick='insertar("\\sec\\left(\\right)")'>sec</button></td>
+				<td><button class='form-control' onClick='insertar("\\cot\\left(\\right)")'>cot</button></td>
+			</tr>
+			<tr>
+				<td><button class='form-control' onClick='insertar("+")'>+</button></td>
+				<td><button class='form-control' onClick='insertar("-")'><img src='images/resta.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("i")'><img src='images/imaginario.png' width='40px'>
+				</td>
+				<td><button class='form-control' onClick='insertar("\\sqrt")'><img src='images/raiz2.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("\\nthroot")'><img src='images/raiz.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("sen^{-1}\\left(\\right)")'>sen<sup>-1</sup></button>
+				</td>
+				<td><button class='form-control' onClick='insertar("\\cos^{-1}\\left(\\right)")'>cos<sup>-1</sup></a>
+				</td>
+				<td><button class='form-control' onClick='insertar("\\tan^{-1}\\left(\\right)")'>tan<sup>-1</sup></a>
+				</td>
+			</tr>
+			<tr>
+				<td><button class='form-control' onClick='insertar("*")'><img src='images/multiplicacion.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("\div")'><img src='images/division.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("\\theta")'>&theta;</button></td>
+				<td><button class='form-control' onClick='insertar("e")'><i>e</i></button></td>
+				<td><button class='form-control' onClick='insertar("\\ln\\left(\\right)")'>ln</button></td>
+
+				<td><button class='form-control' onClick='insertar("\\csc^{-1}\\left(\\right)")'>csc<sup>-1</sup></a>
+				</td>
+				<td><button class='form-control'
+						onClick='insertar("\\sec^{-1}\\left(\\right)")'>sec<sup>-1</sup></button></td>
+				<td><button class='form-control' onClick='insertar("\\cot^{-1}\\left(\\right)")'>cot<sup>-1</sup></a>
+				</td>
+			</tr>
+			<tr>
+				<td><button class='form-control' onClick='insertar(".")'><img src='images/punto.png'
+							width='40px'></button></td>
+				<td><button class='form-control' onClick='insertar("=")'>=</button></td>
+				<td><button class='form-control' title='Escalón unitario'
+						onClick='insertar("U\\left(\\right)")'>U</button></td>
+				<td>
+					<button class='form-control' data-toggle="modal" data-target="#myModal"><img src='images/texto.png'
+							width='40px'>
+				</td>
+				<td colspan='2'>
+					<input type='button' class='form-control' onclick='borrar()' value='Borrar'>
+				</td>
+				<td colspan='2'>
+					<input type='button' class='form-control' onclick='copiar("codigo")' value='Copiar'>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog" style='text-align:center'>
+		<div class="modal-dialog modal-sm">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Texto en pantalla</h4>
+				</div>
+				<div class="modal-body">
+					<p><input type='radio' name='texto-size' onclick='textoSize("pequeño")'> Pequeño</p>
+					<p><input type='radio' name='texto-size' onclick='textoSize("mediano")'> Mediano</p>
+					<p><input type='radio' name='texto-size' onclick='textoSize("grande")'> Grande</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="scripts/keyboard-functions.js"></script>
+</body>
+
+</html>
